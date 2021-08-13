@@ -134,7 +134,7 @@
 				"typeProperties": {
 					"variableName": "currentDate",
 					"value": {
-						"value": "@formatDateTime(adddays(utcnow(),-3),'ddMMyyyy')",
+						"value": "@formatDateTime(adddays(utcnow(),-0),'ddMMyyyy')",
 						"type": "Expression"
 					}
 				}
