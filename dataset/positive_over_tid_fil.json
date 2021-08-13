@@ -21,31 +21,31 @@
 		},
 		"schema": [
 			{
-				"name": "2020-01-27",
+				"name": "Date",
 				"type": "String"
 			},
 			{
-				"name": "          01",
+				"name": "NewPositive",
 				"type": "String"
 			},
 			{
-				"name": "          02",
+				"name": "NotPrevPos",
 				"type": "String"
 			},
 			{
-				"name": " 0,0",
+				"name": "PosPct",
 				"type": "String"
 			},
 			{
-				"name": "          04",
+				"name": "PrevPos",
 				"type": "String"
 			},
 			{
-				"name": "          05",
+				"name": "Tested",
 				"type": "String"
 			},
 			{
-				"name": "          06",
+				"name": "Tested_kumulativ",
 				"type": "String"
 			}
 		]
