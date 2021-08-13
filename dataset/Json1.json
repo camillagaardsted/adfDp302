@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "covid19.json",
 				"container": "blobimages"
 			}
 		},
