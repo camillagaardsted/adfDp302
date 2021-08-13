@@ -1,0 +1,30 @@
+{
+	"name": "covid19zipfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SSI http",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dailyfilename": {
+				"type": "string",
+				"defaultValue": "overvaagningsdata-covid19-11082021-vu5q"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().dailyfilename",
+					"type": "Expression"
+				}
+			},
+			"compression": {
+				"type": "ZipDeflate"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
