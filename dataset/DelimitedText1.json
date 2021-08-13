@@ -1,0 +1,53 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Test_pos_over_time.csv",
+				"folderPath": "overvaagningsdata-covid19-12082021-2e37",
+				"container": "covid19"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "2020-01-27",
+				"type": "String"
+			},
+			{
+				"name": "          01",
+				"type": "String"
+			},
+			{
+				"name": "          02",
+				"type": "String"
+			},
+			{
+				"name": " 0,0",
+				"type": "String"
+			},
+			{
+				"name": "          04",
+				"type": "String"
+			},
+			{
+				"name": "          05",
+				"type": "String"
+			},
+			{
+				"name": "          06",
+				"type": "String"
+			}
+		]
+	}
+}
