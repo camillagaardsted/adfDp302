@@ -21,7 +21,7 @@
 					"name": "DerivedColumn1"
 				}
 			],
-			"script": "source(output(\n\t\tDate as string,\n\t\tNewPositive as string,\n\t\tNotPrevPos as string,\n\t\tPosPct as string,\n\t\tPrevPos as string,\n\t\tTested as string,\n\t\tTested_kumulativ as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 filter(like(Date,'%-%')) ~> Filter1\nFilter1 derive(NyePositive = currentTimestamp(),\n\t\tNye = length(NewPositive),\n\t\ttest = equals(trim(NewPositive), '0'),\n\t\tcolumn1 = length(trim(NewPositive))) ~> DerivedColumn1"
+			"script": "source(output(\n\t\tDate as string,\n\t\tNewPositive as string,\n\t\tNotPrevPos as string,\n\t\tPosPct as string,\n\t\tPrevPos as string,\n\t\tTested as string,\n\t\tTested_kumulativ as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 filter(like(Date,'%-%')) ~> Filter1\nFilter1 derive(NyePositive = currentTimestamp(),\n\t\tNye = length(NewPositive),\n\t\ttest = equals(trim(NewPositive), '0'),\n\t\tcolumn1 = length(trim(NewPositive)),\n\t\tcolumn2 = toInteger((trim(NewPositive)),'###.###','de')) ~> DerivedColumn1"
 		}
 	}
 }
