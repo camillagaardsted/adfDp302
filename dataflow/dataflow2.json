@@ -29,7 +29,7 @@
 					"name": "DerivedColumn1"
 				}
 			],
-			"script": "source(output(\n\t\tDate as string,\n\t\tNewPositive as string,\n\t\tNotPrevPos as string,\n\t\tPosPct as string,\n\t\tPrevPos as string,\n\t\tTested as string,\n\t\tTested_kumulativ as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 filter(like(Date,'%-%') && like(NewPositive,'%.%')) ~> Filter1\nFilter1 derive(column2 = toInteger((trim('1.123')),'#.###','de')) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(output(\n\t\tDate as string,\n\t\tNewPositive as string,\n\t\tNotPrevPos as string,\n\t\tPosPct as string,\n\t\tPrevPos as string,\n\t\tTested as string,\n\t\tTested_kumulativ as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 filter(like(Date,'%-%') && like(NewPositive,'%.%')) ~> Filter1\nFilter1 derive(column2 = toInteger((trim('1.123')),'#.###','de'),\n\t\tcolumn3 = length(trim(NewPositive))) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }
