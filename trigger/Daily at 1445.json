@@ -20,10 +20,10 @@
 				"timeZone": "Romance Standard Time",
 				"schedule": {
 					"minutes": [
-						45
+						30
 					],
 					"hours": [
-						14
+						15
 					]
 				}
 			}
