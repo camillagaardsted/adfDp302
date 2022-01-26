@@ -6,14 +6,15 @@
 			"sources": [
 				{
 					"name": "positive_over_tid_fil",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  positive_over_tid_fil",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> positive_over_tid_fil",
 					"dataset": {
 						"referenceName": "positive_over_tid_fil",
 						"type": "DatasetReference"
 					}
 				}
 			],
-			"script": "section Section1;\r\nshared positive_over_tid_fil = let\r\n  AdfDoc = AzureStorage.BlobContents(\"https://websiteimagesblob202109.blob.core.windows.net/covid19/overvaagningsdata-covid19-12082021-2e37/Test_pos_over_time.csv\"),\r\n  Csv = Csv.Document(AdfDoc, [Delimiter = \";\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]),\r\n  PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true])\r\nin\r\n  PromotedHeaders;\r\nshared UserQuery = let\r\n  Source = positive_over_tid_fil,\r\n  #\"Removed columns\" = Table.RemoveColumns(Source, {\"PrevPos\", \"Tested\", \"Tested_kumulativ\"}),\r\n  #\"Filtered rows\" = Table.SelectRows(#\"Removed columns\", each Text.Contains([Date], \"-\")),\r\n  #\"Changed column type\" = Table.TransformColumnTypes(#\"Filtered rows\", {{\"Date\", type date}, {\"NewPositive\", Int64.Type}}),\r\n  #\"Removed columns 1\" = Table.RemoveColumns(#\"Changed column type\", {\"NotPrevPos\", \"PosPct\"}),\r\n  #\"Renamed columns\" = Table.RenameColumns(#\"Removed columns 1\", {{\"NewPositive\", \"NyePositive\"}, {\"Date\", \"Dato\"}})\r\nin\r\n  #\"Renamed columns\";\r\n"
+			"script": "section Section1;\r\nshared positive_over_tid_fil = let\r\n  AdfDoc = AzureStorage.BlobContents(\"https://su20220124storage.blob.core.windows.net/demodata/covid19dk/overvaagningsdata-covid19-25012022-f7tr/Test_pos_over_time.csv\"),\r\n  Csv = Csv.Document(AdfDoc, [Delimiter = \";\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]),\r\n  PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true])\r\nin\r\n  PromotedHeaders;\r\nshared UserQuery = let\r\n  Source = positive_over_tid_fil,\r\n  #\"Removed columns\" = Table.RemoveColumns(Source, {\"PrevPos\", \"Tested\", \"Tested_kumulativ\"}),\r\n  #\"Filtered rows\" = Table.SelectRows(#\"Removed columns\", each Text.Contains([Date], \"-\")),\r\n  #\"Changed column type\" = Table.TransformColumnTypes(#\"Filtered rows\", {{\"Date\", type date}, {\"NewPositive\", Int64.Type}}),\r\n  #\"Removed columns 1\" = Table.RemoveColumns(#\"Changed column type\", {\"NotPrevPos\", \"PosPct\"}),\r\n  #\"Renamed columns\" = Table.RenameColumns(#\"Removed columns 1\", {{\"NewPositive\", \"NyePositive\"}, {\"Date\", \"Dato\"}})\r\nin\r\n  #\"Renamed columns\";\r\n",
+			"documentLocale": "en-us"
 		}
 	}
 }
