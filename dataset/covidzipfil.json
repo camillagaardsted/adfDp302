@@ -1,17 +1,19 @@
 {
-	"name": "csvfiles",
+	"name": "covidzipfil",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "SSI website",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"folderPath": "covid19dk",
-				"container": "demodata"
+				"type": "HttpServerLocation",
+				"relativeUrl": "overvaagningsdata-covid19-25012022-f7tr"
+			},
+			"compression": {
+				"type": "ZipDeflate"
 			}
 		}
 	},
