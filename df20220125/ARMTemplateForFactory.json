@@ -695,7 +695,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Daily at 1415')]",
+			"name": "[concat(parameters('factoryName'), '/Daily at 1445')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -719,10 +719,10 @@
 						"timeZone": "Romance Standard Time",
 						"schedule": {
 							"minutes": [
-								15
+								30
 							],
 							"hours": [
-								14
+								15
 							]
 						}
 					}
